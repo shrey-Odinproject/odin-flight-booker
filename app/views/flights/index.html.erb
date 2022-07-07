@@ -6,3 +6,14 @@
   <p>Passengers: <%= f.select(:passenger, (@num_passenger_options)) %></p>
   <p><%= f.submit "Search" %></p>
 <% end %>
+
+<% if @result.exists? %>
+    <% @result.each do |r|%>
+        <p>From: <%= r.departure_airport.code %></p>
+        <p>To: <%= r.arrival_airport.code %></p>
+        <p>On: <%= r.start %></p>
+        <p>Duration: <%= r.duration %> mins</p>
+    <%end%>
+<%else%>
+    no flights
+<%end%>
