@@ -1,5 +1,8 @@
-<%= form_with url: '/flights', method: :get do |f| %>
+<%= form_with url: '/', method: :get do |f| %>
   <%= f.label :flight, "Search for flight:" %>
-  <%= f.text_field :flight %>
-  <%= f.submit "Search" %>
+  <p>Departure: <%= f.select(:departure_airport_id, (@all_airport_options)) %></p>
+  <p>Arrival: <%= f.select(:arrival_airport_id, (@all_airport_options)) %></p>
+  <p>Dates: <%= f.select(:start, (@date_options)) %></p>
+  <p>Passengers: <%= f.select(:passenger, (@num_passenger_options)) %></p>
+  <p><%= f.submit "Search" %></p>
 <% end %>
