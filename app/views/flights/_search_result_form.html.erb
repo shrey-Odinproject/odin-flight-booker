@@ -1,0 +1,13 @@
+<%= form_with url: '/' , method: :get do |f| %>
+        <%= f.hidden_field :passenger, value: passenger_result %>
+        <% @result.each do |r|%>
+            <%= radio_button_tag(:flight_id, r.id, { checked: true }) %>
+            <p>From: <%= r.departure_airport.code %></p>
+            <p>To: <%= r.arrival_airport.code %></p>
+            <p>On: <%= r.start %></p>
+            <p>Duration: <%= r.duration %> hours</p>
+        <%end%>
+        <%= f.submit "Select" %>
+<% end %>
+
+<%# submits passenger,flight_id params to (not yet created) BookingsController %>

@@ -1,19 +1,9 @@
-<%= form_with url: '/', method: :get do |f| %>
-  <%= f.label :flight, "Search for flight:" %>
-  <p>Departure: <%= f.select(:departure_airport_id, (@all_airport_options)) %></p>
-  <p>Arrival: <%= f.select(:arrival_airport_id, (@all_airport_options)) %></p>
-  <p>Dates: <%= f.select(:start, (@date_options)) %></p>
-  <p>Passengers: <%= f.select(:passenger, (@num_passenger_options)) %></p>
-  <p><%= f.submit "Search" %></p>
-<% end %>
+<%= render partial: "search_form", locals: {all_airport_options: @all_airport_options, date_options: @date_options, num_passenger_options: @num_passenger_options}  %>
+
+<%# passenger and result both are calculated from search form  %>
 
 <% if @result.exists? %>
-    <% @result.each do |r|%>
-        <p>From: <%= r.departure_airport.code %></p>
-        <p>To: <%= r.arrival_airport.code %></p>
-        <p>On: <%= r.start %></p>
-        <p>Duration: <%= r.duration %> mins</p>
-    <%end%>
+    <%= render partial: "search_result_form", locals: {result: @result, passenger_result: @passenger_result} %>
 <%else%>
     no flights
 <%end%>
