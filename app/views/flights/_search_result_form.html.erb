@@ -4,7 +4,8 @@
             <%= radio_button_tag(:flight_id, r.id, { checked: true }) %>
             <p>From: <%= r.departure_airport.code %></p>
             <p>To: <%= r.arrival_airport.code %></p>
-            <p>On: <%= r.start %></p>
+            <p>On: <%= r.start.strftime("%B %d, %Y") %></p>
+            <p>Time: <%= r.start.strftime("%H:%M") %></p>
             <p>Duration: <%= r.duration %> hours</p>
         <%end%>
         <%= f.submit "Book" %>

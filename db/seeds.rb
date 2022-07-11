@@ -16,11 +16,11 @@ airports = Airport.create([
 p "created #{Airport.count} airports"
 
 Flight.create([
-  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 3, start: DateTime.parse("2022-11-22 09:00")},
-  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 9, start: DateTime.parse("2022-12-25 11:00")},
-  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 7, start: DateTime.parse("2022-11-22 09:00")},
-  { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 6, start: DateTime.parse("2022-11-22 09:00")},
-  { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 8, start: DateTime.parse("2022-12-25 11:00")},
+  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 3, start: DateTime.parse("2022-11-22 07:00")},
+  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 9, start: DateTime.parse("2022-12-25 09:00")},
+  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 7, start: DateTime.parse("2022-11-22 11:00")},
+  { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 6, start: DateTime.parse("2022-12-25 07:00")},
+  { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 8, start: DateTime.parse("2022-11-22 09:00")},
   { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 5, start: DateTime.parse("2022-12-25 11:00")}
 ])
 p "created #{Flight.count} flights"
