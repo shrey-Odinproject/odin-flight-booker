@@ -1,6 +1,6 @@
 class FlightsController < ApplicationController
   def index
-    @date_options = Flight.distinct.pluck(:start, :start) # as we want array of arrays and pluck directly gives an array 
+    @date_options = Flight.all.map { |f| [f.start.to_date, f.start]}.uniq
     @num_passenger_options = *(1..4).map { |n| [n, n] }
     @all_airport_options = Airport.all.map { |a| [a.code, a.id] } # can replace with  Airport.pluck(:code, :id)
 

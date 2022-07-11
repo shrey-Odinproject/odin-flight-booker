@@ -8,21 +8,19 @@
 Airport.destroy_all
 Flight.destroy_all
 
-a1 = Airport.create(code: 'NYC')
-a2 = Airport.create(code: 'MUM')
-a3 = Airport.create(code: 'LON')
-a4 = Airport.create(code: 'SYD')
-a5 = Airport.create(code: 'PAR')
+airports = Airport.create([
+  { code: 'LON' },
+  { code: 'NYC' }
+])
 
-airports = [a1, a2, a3, a4, a5]
-dates = [DateTime.parse("14/12/2022 08:00"), DateTime.parse("22/11/2022 20:00"), DateTime.parse("10/07/2022 18:30"),
-         DateTime.parse("17/04/2022 09:00"), DateTime.parse("03/03/2022 16:15")]
 p "created #{Airport.count} airports"
 
-20.times do
-  port1, port2 = airports.sample(2)
-  Flight.create(start: dates.sample,
-                duration: rand(1..10), departure_airport_id: port1.id, arrival_airport_id: port2.id)
-end
-
+Flight.create([
+  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 3, start: DateTime.parse("2022-11-22 09:00")},
+  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 9, start: DateTime.parse("2022-12-25 11:00")},
+  { departure_airport_id: airports.first.id, arrival_airport_id: airports.last.id, duration: 7, start: DateTime.parse("2022-11-22 09:00")},
+  { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 6, start: DateTime.parse("2022-11-22 09:00")},
+  { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 8, start: DateTime.parse("2022-12-25 11:00")},
+  { departure_airport_id: airports.last.id, arrival_airport_id: airports.first.id, duration: 5, start: DateTime.parse("2022-12-25 11:00")}
+])
 p "created #{Flight.count} flights"
