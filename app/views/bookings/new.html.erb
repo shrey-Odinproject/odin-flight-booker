@@ -1,2 +1,20 @@
-<%= @flight%>
-<%= @no_of_passengers %>
+<%= form_with model: @booking do |f| %>
+    <p>From: <%= @flight.departure_airport.code %></p>
+    <p>To: <%= @flight.arrival_airport.code %></p>
+    <p>On: <%= @flight.start.strftime("%B %d, %Y") %></p>
+    <p>Time: <%= @flight.start.strftime("%H:%M") %></p>
+    <p>Duration: <%= @flight.duration %> hours</p>
+
+    Passengers:
+    <ul>
+        <%= f.fields_for :passengers do |sub_form| %>
+        <li>
+            <%= sub_form.label :name, 'Name: ' %>
+            <%= sub_form.text_field :name %> 
+            <%= sub_form.label :email, 'Email: ' %>
+            <%= sub_form.text_field :email %>
+        </li>
+        <% end %>
+    </ul>
+    <%= f.submit %>
+<% end %>

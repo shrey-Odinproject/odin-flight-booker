@@ -1,4 +1,4 @@
-<%= form_with url: '/', method: :get do |f| %>
+<%= form_with url: root_path, method: :get do |f| %>
   <%= f.label :flight, "Search for flight:" %>
   <p>Departure: <%= f.select(:departure_airport_id, (all_airport_options)) %></p>
   <p>Arrival: <%= f.select(:arrival_airport_id, (all_airport_options)) %></p>
