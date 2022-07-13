@@ -1,10 +1,10 @@
-<%= form_with model: @booking do |f| %>
-    <p>From: <%= @flight.departure_airport.code %></p>
-    <p>To: <%= @flight.arrival_airport.code %></p>
-    <p>On: <%= @flight.start.strftime("%B %d, %Y") %></p>
-    <p>Time: <%= @flight.start.strftime("%H:%M") %></p>
-    <p>Duration: <%= @flight.duration %> hours</p>
+<h2>Flight details:</h2>
+<p><%= @flight.departure_airport.code %> --> <%= @flight.arrival_airport.code %></p>
+<p>Departure: <%= @flight.start.strftime("%B %d, %Y") %>, <%= @flight.start.strftime("%H:%M") %> </p>
+<p>Duration: <%= @flight.duration %> hours</p>
 
+<%= form_with model: @booking do |f| %>
+    <%= f.hidden_field :flight_id, value: @flight.id %>
     Passengers:
     <ul>
         <%= f.fields_for :passengers do |sub_form| %>
@@ -16,5 +16,5 @@
         </li>
         <% end %>
     </ul>
-    <%= f.submit %>
+    <%= f.submit 'buy tickets' %>
 <% end %>
