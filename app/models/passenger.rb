@@ -1,4 +1,4 @@
 class Passenger < ApplicationRecord
-  has_many :bookings
-  has_many :flights, through: :bookings
+  belongs_to :booking
+  delegate :flight, to: :booking # belongs_to flight through booking is replaced by delegate
 end
