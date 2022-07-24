@@ -1,5 +1,4 @@
 <%= form_with url: new_booking_path , method: :get do |f| %>
-        <%= f.hidden_field :passenger, value: passenger_result %>
         <% @result.each do |r|%>
             <%= radio_button_tag(:flight_id, r.id, { checked: true }) %>
             <p>From: <%= r.departure_airport.code %></p>
@@ -11,4 +10,4 @@
         <%= f.submit "Book Flight" %>
 <% end %>
 
-<%# submits passenger,flight_id params to BookingsController %>
+<%# submits flight_id params to BookingsController %>

@@ -6,15 +6,21 @@
 <%= form_with model: @booking do |f| %>
     <%= f.hidden_field :flight_id, value: @flight.id %>
     Passengers:
-    <ul>
+    
+    <div data-controller="nform" >
+        <template data-nform-target ="rendertemp" >
+            <%= f.fields_for :passengers, Passenger.new, child_index:'TEMPLATE_RECORD' do |sub_form| %>
+                <%= render 'passenger_fields',f: sub_form %>
+            <%end%>
+        </template>
+        
         <%= f.fields_for :passengers do |sub_form| %>
-        <li>
-            <%= sub_form.label :name, 'Name: ' %>
-            <%= sub_form.text_field :name %> 
-            <%= sub_form.label :email, 'Email: ' %>
-            <%= sub_form.text_field :email %>
-        </li>
-        <% end %>
-    </ul>
+            <%= render 'passenger_fields',f: sub_form %>
+        <%end%>
+
+        <div data-nform-target="addpass" > </div>
+        <button type="button" data-action="click->nform#add">Add passenger</button>
+    </div>
+
     <%= f.submit 'buy tickets' %>
 <% end %>

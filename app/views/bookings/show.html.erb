@@ -3,7 +3,6 @@
 <p><%= @flight.departure_airport.code %> --> <%= @flight.arrival_airport.code %></p>
 <p>Departure: <%= @flight.start.strftime("%B %d, %Y") %>, <%= @flight.start.strftime("%H:%M") %> </p>
 <p>Duration: <%= @flight.duration %> hours</p>
-
 Passenger details :
 <ul>
     <% @booking.passengers.each do |p|%>

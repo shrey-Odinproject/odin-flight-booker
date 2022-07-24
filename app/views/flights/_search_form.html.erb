@@ -3,8 +3,7 @@
   <p>Departure: <%= f.select(:departure_airport_id, (all_airport_options)) %></p>
   <p>Arrival: <%= f.select(:arrival_airport_id, (all_airport_options)) %></p>
   <p>Dates: <%= f.select(:start, (date_options)) %></p>
-  <p>Passengers: <%= f.select(:passenger, (num_passenger_options)) %></p>
   <p><%= f.submit "Search" %></p>
 <% end %>
 
-<%# submits departure_airport_id,arrival_airport_id,passenger,start params to FlightsController %>
+<%# submits departure_airport_id,arrival_airport_id,start params to FlightsController %>
