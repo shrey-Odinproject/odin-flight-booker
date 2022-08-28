@@ -17,8 +17,8 @@ class BookingsController < ApplicationController
       flash[:success] = "Great! Your booking has been created!"
       redirect_to @booking
     else
-      flash.now[:error] = 'Booking failed'
-      render :new, status: :unprocessable_entity
+      flash[:error] = 'Booking failed'
+      redirect_to root_path 
     end
   end
 
