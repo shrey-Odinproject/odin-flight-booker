@@ -3,10 +3,8 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @passenger.name %></h1>
-    <p>
-      Ur flight has been booked <br>
-    </p>
+    <h1>Your Booking, #<%= @booking.id %> is confirmed</h1>
+    <p>Details for <%= link_to 'your booking', booking_url(@booking) %> are available online. </p>  
     <p>Have a great day!</p>
   </body>
 </html>

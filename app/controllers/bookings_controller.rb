@@ -11,14 +11,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
 
     if @booking.save
-      @booking.passengers.each do |pass|
-        PassengerMailer.confirmation_email(pass).deliver_later
-      end
+      PassengerMailer.with(booking: @booking).confirmation_email.deliver_later
       flash[:success] = "Great! Your booking has been created!"
       redirect_to @booking
     else
       flash[:error] = 'Booking failed'
-      redirect_to root_path 
+      redirect_to root_path
     end
   end
 
