@@ -73,3 +73,5 @@ end
 
 # to preview emails in browser instead of sending them 
 gem "letter_opener", group: :development
+
+gem "figaro"
